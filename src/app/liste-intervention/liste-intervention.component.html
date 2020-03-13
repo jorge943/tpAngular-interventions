@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col-xs-12">
+    <h2> Interventions </h2>
+    <div class="list-group">
+      <button class="list-group-item"
+              *ngFor="let intervention of interventions, let i = index"
+              (click)="onViewIntervention(i)" title="cliquez pour le détail" [ngStyle]="{backgroundColor: getColor(i)}">
+        <h3 class="list-group-item-heading">
+          {{intervention.libelle}}
+          <button class="btn btn-default pull-right" (click)="onDeleteIntervention(intervention)" title="cliquez pour supprimer">
+            <span class="glyphicon glyphicon-remove-circle"></span>
+          </button>
+          <button class="btn btn-default pull-right" (click)="onUpdateIntervention(intervention)" title="cliquez pour modifier" [disabled]="(intervention.etat === 2)">
+            <span class="glyphicon glyphicon-pencil"></span>
+          </button>
+        </h3>
+        <p class="list-group-item-text">{{intervention.nomIntervenant}}</p>
+        <p class="list-group-item-text">{{intervention.lieu}}</p>
+      </button>
+    </div>
+    <button class="btn btn-primary" (click)="onNewIntervention()">Crée Intervention</button>
+    <li class="list-group-item">
+      <div style="width: 20px; height: 20px; background-color: ALICEBLUE;"></div>
+      <p> état Brouillon</p>
+      <div style="width: 20px; height: 20px; background-color: LIGHTSTEELBLUE;"></div>
+      <p> état Validée</p>
+      <div style="width: 20px; height: 20px; background-color: LIGHTGREEN;"></div>
+      <p> état Terminé</p>
+    </li>
+  </div>
+</div>
